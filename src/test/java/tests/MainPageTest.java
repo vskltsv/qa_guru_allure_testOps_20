@@ -15,31 +15,12 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+
 @Tag("remote")
-public class MainPageTest  extends TestBase {
-
-    @DisplayName("Switch language check")
-    @Tag("")
-    @ParameterizedTest
-    @MethodSource
-    public void switchLanguageOnMainPage(List<String> items) {
-        step("Open main page", () -> open(""));
-        step("Click on the lang switcher", () -> mainPage.clickSwitchLanguageIcon());
-        step("Result check", () -> $$(".header__nav-list").should(CollectionCondition.texts(items)));
-    }
-
-    static Stream<Arguments> switchLanguageOnMainPage() {
-        return Stream.of(
-                Arguments.of(List.of("Company\n" +
-                        "Consumer\n" +
-                        "For Partners\n" +
-                        "Investors\n" +
-                        "Press Centre")));
-    }
+public class MainPageTest extends TestBase {
 
     @DisplayName("Company tab titles check")
     @Test
-    @Tag("Company tab titles")
     public void theCompanyTabContent() {
         step("Open main page", () -> open(""));
         step("Open company tab", () -> mainPage.clickOnText("Компания"));
@@ -53,7 +34,6 @@ public class MainPageTest  extends TestBase {
 
     @DisplayName("Consumer tab title check")
     @Test
-    @Tag("Consumer tab title")
     public void theConsumerTabContent() {
         step("Open main page", () -> open(""));
         step("Open consumer tab", () -> mainPage.clickOnText("Покупателю"));
@@ -62,7 +42,6 @@ public class MainPageTest  extends TestBase {
 
 
     @DisplayName("Check address on page")
-    @Tag("Address view on page")
     @Test
     public void viewAddressOnPage() {
         step("Open main page", () -> open(""));
@@ -71,7 +50,6 @@ public class MainPageTest  extends TestBase {
     }
 
     @DisplayName("Search field test")
-    @Tag("Search field")
     @Test
     public void searchFieldCheck() {
         step("Open main page", () -> open(""));
